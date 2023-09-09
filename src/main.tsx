@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-import { Root } from './Routes/Root.tsx'
+import { Root } from './Routes/Root/index.tsx'
 import { FoodList } from './Routes/FoodList/index.tsx'
 
 
