@@ -18,4 +18,17 @@ export const Ul = styled.ul`
    list-style: none;
 `
 export const Button = styled.button`
+   display: flex;
+   padding: 0.625rem;
+   justify-content: center;
+   align-items: center;
+   border: none;
+   color: white;
+   
+   font-size: 16px;
+   text-transform: uppercase;
+   cursor: pointer;
+
+   border-radius: 0.375rem;
+   background: #FF9E0D;
 `
