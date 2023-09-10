@@ -13,7 +13,8 @@ export const Nav = styled.div`
    width: 280px;
    background-color: rgba(22, 25, 36, 1);
    color: white;
-
+   position: fixed;
+   
    header{
       padding: 1rem 1rem;
       border-bottom: #ffffff44 1px solid;
@@ -34,5 +35,6 @@ export const NavMenu = styled.nav`
 
 export const Main = styled.main`
    flex: 1;
+   margin-left: 280px;
    padding: 1rem 2rem;
 `

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { FoodCard } from "../../components/FoodCard"
 import { Button, Container, Header, Ul } from "./styles"
-import axios, { AxiosPromise } from "axios";
+import axios from "axios";
 
 interface IFoodData {
   id: string

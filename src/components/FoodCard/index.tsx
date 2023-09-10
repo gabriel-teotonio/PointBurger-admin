@@ -14,7 +14,7 @@ export const FoodCard = ({title,description, price, imgUrl}: FoodCardProps) => {
       <div>
          <InfoTitle>
             <h4>{title}</h4>
-            <span>{price}</span>
+            <span>R$ {price}</span>
          </InfoTitle>
          <InfoDescription>
             <h5>Ingredintes:</h5>
