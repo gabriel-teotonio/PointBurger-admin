@@ -28,6 +28,7 @@ export const Button = styled.button`
    padding: 0.625rem;
    justify-content: center;
    align-items: center;
+   gap: .5rem;
    border: none;
    color: white;
    

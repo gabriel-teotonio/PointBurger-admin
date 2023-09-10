@@ -1,7 +1,8 @@
-import { Outlet } from "react-router-dom"
+import { Outlet, useNavigate } from "react-router-dom"
 import { Container, Main, Nav, NavMenu } from "./styles"
 
 export const Root = () => {
+   const navigate = useNavigate()
    return (
       <Container>
          <Nav>
@@ -9,7 +10,7 @@ export const Root = () => {
                <p><img src="src/icons/logo.svg" alt="logo" /></p>
             </header>
             <NavMenu>
-               <li>Burgers</li>
+               <li onClick={() => navigate("/")}>Burgers</li>
                <li>Pedidos</li>
             </NavMenu>
          </Nav>

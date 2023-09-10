@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { FoodCard } from "../../components/FoodCard"
 import { Button, Container, Header, Ul } from "./styles"
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 interface IFoodData {
   id: string
@@ -13,6 +14,7 @@ interface IFoodData {
 const url = "http://localhost:3000"
 export const FoodList = () => {
   const [foods, setFoods] = useState<IFoodData[]>([])
+  const navigate = useNavigate()
   
   const fetchData = async () => {
     const response = await axios.get(url + "/foods")
@@ -28,7 +30,10 @@ export const FoodList = () => {
     <Container>
       <Header>
          <h3>Burgers</h3>
-         <Button>Adicionar novo burger</Button>
+          <Button onClick={() => navigate("/foodCreate")}>
+            <img src="src/icons/IconPlus.svg" alt="icon plus" />
+            novo burger
+          </Button>
       </Header>
       <Ul>
         {foods.map((food) => (
