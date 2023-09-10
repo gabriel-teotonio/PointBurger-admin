@@ -16,6 +16,12 @@ export const Header = styled.header`
 `
 export const Ul = styled.ul`
    list-style: none;
+   display: flex;
+   align-items: center;
+   /* justify-content: space-between; */
+   gap: 1rem;
+   max-width: 100%;
+   flex-wrap: wrap;
 `
 export const Button = styled.button`
    display: flex;

@@ -2,12 +2,14 @@ import styled from "styled-components";
 
 export const Container = styled.div`
    min-height: 100vh;
+   height: auto;
    display: flex;
 `
 export const Nav = styled.div`
    display: flex;
    flex-direction: column;
-   height: 100vh;
+   min-height: 100vh;
+   height: 100%;
    width: 280px;
    background-color: rgba(22, 25, 36, 1);
    color: white;

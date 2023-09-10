@@ -1,17 +1,24 @@
 import { ActionsBtn, Container, InfoDescription, InfoTitle } from "./styles"
 
-export const FoodCard = () => {
+interface FoodCardProps {
+   title: string
+   description: string
+   price: number
+   imgUrl: string  
+}
+
+export const FoodCard = ({title,description, price, imgUrl}: FoodCardProps) => {
   return (
     <Container>
-      <img src="/src/imgs/burger3.png" alt="img burger" />
+      <img src={imgUrl} alt="img burger" />
       <div>
          <InfoTitle>
-            <h4>Burger X-charque</h4>
-            <span>R$24,00</span>
+            <h4>{title}</h4>
+            <span>{price}</span>
          </InfoTitle>
          <InfoDescription>
             <h5>Ingredintes:</h5>
-            <p>Blend 150g, salada, charque, cheddar, picles</p>
+            <p>{description}</p>
          </InfoDescription>
          <ActionsBtn>
             <button>

@@ -9,8 +9,10 @@ export const Container = styled.li`
    box-shadow: 1px 1px 4px 0px rgba(0, 0, 0, 0.10);
    padding: 1rem;
 
-   img{
+   >img{
       width: 100%;
+      height: 260px;
+      border-radius: 1rem;
    }
 
 `
