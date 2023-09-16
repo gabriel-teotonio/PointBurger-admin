@@ -3,7 +3,7 @@ import { FoodCard } from "../../components/FoodCard"
 import { Button, Container, Header, Ul } from "./styles"
 import { useNavigate } from "react-router-dom";
 import { IFoodData } from "../../types/FoodData";
-import { api } from "../../services/axios";
+import { api } from "../../lib/axios";
 
 
 

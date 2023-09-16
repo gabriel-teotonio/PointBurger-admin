@@ -2,7 +2,7 @@ import { useNavigate, useParams } from "react-router-dom"
 import { Form } from "../../components/Form"
 import { Header } from "../FoodCreate/styles"
 import { IFoodDataForm } from "../../types/FoodData"
-import { api } from "../../services/axios"
+import { api } from "../../lib/axios"
 
 export const FoodUpdate = () => {
    const {id} = useParams()

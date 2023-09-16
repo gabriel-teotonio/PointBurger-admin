@@ -4,7 +4,7 @@ import { Container, ErroMessage } from "./styles"
 import { useForm } from "react-hook-form"
 import * as yup from "yup"
 import { useEffect } from "react"
-import { api } from "../../services/axios"
+import { api } from "../../lib/axios"
 import { useParams } from "react-router-dom"
 
 interface FormProps {

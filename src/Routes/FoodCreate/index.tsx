@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom"
 import { Form } from "../../components/Form"
 import { Header } from "./styles"
 import { IFoodDataForm } from "../../types/FoodData"
-import { api } from "../../services/axios"
+import { api } from "../../lib/axios"
 
 export const FoodCreate = () => {
   const navigate = useNavigate()
