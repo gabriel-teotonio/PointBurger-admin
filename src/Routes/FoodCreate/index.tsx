@@ -2,12 +2,21 @@ import { useNavigate } from "react-router-dom"
 import { Form } from "../../components/Form"
 import { Header } from "./styles"
 import { IFoodDataForm } from "../../types/FoodData"
+import { api } from "../../services/axios"
 
 export const FoodCreate = () => {
   const navigate = useNavigate()
 
   const handleCreateFood = (data: IFoodDataForm) => {
-    console.log(data)
+      api.post("/foods", data)
+      .then(() => {
+        alert("burger adicionado com sucesso!")
+        navigate("/")
+      })
+      .catch(error => {
+        console.log(error)
+        alert("erro ao adicionar burger!")
+      })
   }
 
   return (
