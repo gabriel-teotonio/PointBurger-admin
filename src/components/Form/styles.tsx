@@ -33,3 +33,7 @@ export const Container = styled.form`
       background-color: rgba(255, 158, 13, 1);
    }
 `
+
+export const ErroMessage = styled.p`
+   color: red;
+`

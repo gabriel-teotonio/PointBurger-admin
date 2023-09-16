@@ -1,9 +1,14 @@
 import { useNavigate } from "react-router-dom"
 import { Form } from "../../components/Form"
 import { Header } from "./styles"
+import { IFoodDataForm } from "../../types/FoodData"
 
 export const FoodCreate = () => {
   const navigate = useNavigate()
+
+  const handleCreateFood = (data: IFoodDataForm) => {
+    console.log(data)
+  }
 
   return (
     <div>
@@ -14,7 +19,7 @@ export const FoodCreate = () => {
            Cancelar
           </button>
       </Header>
-      <Form />
+      <Form btnTitle="Adicionar" onAction={handleCreateFood}/>
     </div>
   )
 }

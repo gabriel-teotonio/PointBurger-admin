@@ -3,14 +3,9 @@ import { FoodCard } from "../../components/FoodCard"
 import { Button, Container, Header, Ul } from "./styles"
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { IFoodData } from "../../types/FoodData";
 
-interface IFoodData {
-  id: string
-  title: string
-  description: string
-  price: number
-  imgUrl: string
-}
+
 const url = "http://localhost:3000"
 export const FoodList = () => {
   const [foods, setFoods] = useState<IFoodData[]>([])
