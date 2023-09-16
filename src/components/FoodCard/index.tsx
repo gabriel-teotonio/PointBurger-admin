@@ -1,3 +1,4 @@
+import { api } from "../../services/axios"
 import { ActionsBtn, Container, InfoDescription, InfoTitle } from "./styles"
 
 interface FoodCardProps {
@@ -5,9 +6,19 @@ interface FoodCardProps {
    description: string
    price: number
    imgUrl: string  
+   id: string
+   onDelete: (id:string) => void
 }
 
-export const FoodCard = ({title,description, price, imgUrl}: FoodCardProps) => {
+export const FoodCard = ({title,description, price, imgUrl, id, onDelete}: FoodCardProps) => {
+
+   const handleDeleteFood = () => {
+      const resConfirm = confirm("voce realmente excluir?")
+      if(resConfirm){
+        onDelete(id)
+      }
+   }
+
   return (
     <Container>
       <img src={imgUrl} alt="img burger" />
@@ -24,7 +35,7 @@ export const FoodCard = ({title,description, price, imgUrl}: FoodCardProps) => {
             <button>
                <img src="src/icons/IconEdit.svg" alt="edit icon" />
             </button>
-            <button>
+            <button onClick={handleDeleteFood}>
                <img src="src/icons/IconDelete.svg" alt="delete icon" />
             </button>
          </ActionsBtn>

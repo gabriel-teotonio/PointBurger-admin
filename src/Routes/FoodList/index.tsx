@@ -12,14 +12,24 @@ export const FoodList = () => {
   const [foods, setFoods] = useState<IFoodData[]>([])
   const navigate = useNavigate()
   
+  useEffect(() => {
+    fetchData()
+  }, [])
+
   const fetchData = async () => {
     const response = await api.get("/foods")
     setFoods(response.data)
   }
 
-  useEffect(() => {
-    fetchData()
-  }, [])
+  const onDelete = (id: string) => {
+    const newListFood: IFoodData[] = foods.filter((food) => food.id !== id)
+    api.delete(`/foods/${id}`)
+    .then(() => {
+      setFoods(newListFood)
+      alert("burger excluido com sucesso!")
+    })
+    .catch(error => console.log("erro ao excluir item", error))
+  }
   
 
   return (
@@ -35,10 +45,12 @@ export const FoodList = () => {
         {foods.map((food) => (
           <FoodCard 
           key={food.id}
+          id={food.id}
           title={food.title}
           description={food.description}
           price={food.price}
           imgUrl={food.imgUrl}
+          onDelete={onDelete}
           />
         ))}
       </Ul>
