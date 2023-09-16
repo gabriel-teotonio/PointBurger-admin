@@ -1,5 +1,6 @@
-import { api } from "../../services/axios"
+import { useNavigate } from "react-router-dom"
 import { ActionsBtn, Container, InfoDescription, InfoTitle } from "./styles"
+import { formatedLongText } from "../../utils/formatting"
 
 interface FoodCardProps {
    title: string
@@ -11,13 +12,15 @@ interface FoodCardProps {
 }
 
 export const FoodCard = ({title,description, price, imgUrl, id, onDelete}: FoodCardProps) => {
-
+   const navigate = useNavigate()
    const handleDeleteFood = () => {
       const resConfirm = confirm("voce realmente excluir?")
       if(resConfirm){
         onDelete(id)
       }
    }
+
+   
 
   return (
     <Container>
@@ -29,10 +32,10 @@ export const FoodCard = ({title,description, price, imgUrl, id, onDelete}: FoodC
          </InfoTitle>
          <InfoDescription>
             <h5>Ingredintes:</h5>
-            <p>{description}</p>
+            <p>{description.length > 30 ? formatedLongText(description, 30): description}</p>
          </InfoDescription>
          <ActionsBtn>
-            <button>
+            <button onClick={() => navigate(`/FoodUpdate/${id}`)}>
                <img src="src/icons/IconEdit.svg" alt="edit icon" />
             </button>
             <button onClick={handleDeleteFood}>

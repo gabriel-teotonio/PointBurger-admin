@@ -1,0 +1,1 @@
+export const formatedLongText = (text: string, limit: number) => text.slice(0, limit) + "..."

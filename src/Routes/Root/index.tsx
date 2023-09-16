@@ -7,7 +7,7 @@ export const Root = () => {
       <Container>
          <Nav>
             <header>
-               <p><img src="src/icons/logo.svg" alt="logo" /></p>
+               <p><img src="../src/icons/logo.svg" alt="logo" /></p>
             </header>
             <NavMenu>
                <li onClick={() => navigate("/")}>Burgers</li>

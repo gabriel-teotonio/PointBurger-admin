@@ -3,6 +3,9 @@ import { IFoodDataForm } from "../../types/FoodData"
 import { Container, ErroMessage } from "./styles"
 import { useForm } from "react-hook-form"
 import * as yup from "yup"
+import { useEffect } from "react"
+import { api } from "../../services/axios"
+import { useParams } from "react-router-dom"
 
 interface FormProps {
    btnTitle: string
@@ -22,9 +25,23 @@ const foodSchema = yup.object({
 }).required()
 
 export const Form = ({btnTitle, onAction}: FormProps) => {
-   const { register, handleSubmit, formState:{errors} } = useForm<IFoodDataForm>({
+   const { id } = useParams()
+   const { register, handleSubmit, formState:{errors}, reset } = useForm<IFoodDataForm>({
       resolver: yupResolver(foodSchema)
    })
+
+   const getDataUpdate = async () => {
+    try {
+       const response = await api.get("/foods/" + id)
+       reset(response.data)
+    } catch (error) {
+      console.log("Erro na requisição")
+    } 
+   }
+   useEffect(() => {
+      if(!!id) getDataUpdate()
+   }, [])
+   
 
   return (
    <Container onSubmit={handleSubmit(onAction)}>

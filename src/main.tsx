@@ -5,6 +5,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import { Root } from './Routes/Root/index.tsx'
 import { FoodList } from './Routes/FoodList/index.tsx'
 import { FoodCreate } from './Routes/FoodCreate/index.tsx'
+import { FoodUpdate } from './Routes/FoodUpdate/index.tsx'
 
 
 const router = createBrowserRouter([
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
       {
         path: "/FoodCreate",
         element: <FoodCreate />,
+      },
+      {
+        path: "/FoodUpdate/:id",
+        element: <FoodUpdate />,
       },
     ],
   },
