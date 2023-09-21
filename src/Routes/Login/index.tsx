@@ -62,7 +62,7 @@ const Box = styled.div`
 `
 
 const userSchema = yup.object({
-  user: yup.string().required("campo usuário é obrigatório"),
+  email: yup.string().required("campo E-mail é obrigatório"),
   password: yup.string().required("campo senha é obrigatório")
 }).required()
 
@@ -85,13 +85,13 @@ export const Login = () => {
         </header>
         <form onSubmit={handleSubmit(onSubmit)}>
           <label>
-            Usuário
+            E-mail
             <input 
             type="text"
             placeholder="usuario@gmail.com" 
-            {...register("user")}
+            {...register("email")}
             />
-            {errors.user?.message}
+            {errors.email?.message}
           </label>
           <label>
             Senha
