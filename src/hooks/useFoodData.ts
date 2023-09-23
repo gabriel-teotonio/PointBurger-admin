@@ -15,9 +15,21 @@ export const useFoodData = () => {
          console.log("erro na requisição", error) 
       }
    }
+   const deleteData = (id: string) => {
+      try {
+         api.delete(`/foods/${id}`)
+         .then(() => {
+            fetchData()
+            alert('excluido com sucesso!')
+         })
+      } catch (error) {
+         console.log(error)
+      }
+   }
+
    useEffect(() => {
       fetchData()
-   }, [data])
+   }, [])
    
-   return {data}
+   return { data, deleteData }
 }
