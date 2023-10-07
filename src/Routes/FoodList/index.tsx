@@ -27,7 +27,7 @@ export const FoodList = () => {
           title={food.title}
           description={food.description}
           price={food.price}
-          imgUrl={food.imgUrl}
+          imgUrl={food.img}
           onDelete={deleteData}
           />
         ))}
