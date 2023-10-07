@@ -1,16 +1,17 @@
 import axios from "axios"
-
 const authApi = axios.create({
-   baseURL: process.env.REACT_APP_AUTH_API
+   baseURL: import.meta.env.VITE_REACT_AUTH_API
 })
 
 export const useAuth = () => ({
    validateToken: async (token: string) => {
-      return {
-         user: {id:"3",nome:"jose maria", email:"jose@gmail.com" }
-      };
-      const response = await authApi.post("/validate", {token})
-      return response.data;
+      if(token === "hAHSsdnKsjdf"){
+         return {
+            user: {id:"3",name:"jose maria", email:"jose@gmail.com" }
+         };
+      }
+      // const response = await authApi.post("/validate", {token})
+      // return response.data;
    },
    signin: async (email: string, password: string) => {
       return {

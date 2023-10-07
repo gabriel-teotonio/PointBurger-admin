@@ -1,22 +1,35 @@
 import { useEffect, useState } from "react"
-import { User } from "../../types/User"
 import { useAuth } from "../../hooks/useAuth"
 import { AuthContext } from "./AuthContext"
 
+export interface UserResponse {
+   name: string;
+   email: string;
+   id: string;
+}
 
 export const AuthProvider = ({children}: {children: JSX.Element}) => {
-   const [user, setUser] = useState<User | null>(null)
+   const [user, setUser] = useState<UserResponse | null>(null)
+   const [isLoading, setIsLoading] = useState(true); 
+   const isAutenticated = !!user
    const authApi = useAuth()
-   useEffect(() => {
-      const validateToken = async () => {
+   
+   const validateToken = async () => {
+      try {
          const storageData = localStorage.getItem("AUTH_TOKEN")
          if(storageData){
             const data = await authApi.validateToken(storageData)
-            if(data.user){
+            console.log(data?.user)
+            if(data?.user){
                setUser(data.user)
             }
          }
+      }catch(error){
+        await authApi.logout()
       }
+      setIsLoading(false)
+   }
+   useEffect(() => {
       validateToken()
    }, [])
 
@@ -37,11 +50,11 @@ export const AuthProvider = ({children}: {children: JSX.Element}) => {
    }
 
    const setToken = (token: string) => {
-      localStorage.setItem(JSON.stringify(token), "AUTH_TOKEN")
+      localStorage.setItem("AUTH_TOKEN", token)
    }
 
    return (
-      <AuthContext.Provider value={{user, signin, signout}}>
+      <AuthContext.Provider value={{user, signin, signout, isLoading, isAutenticated}}>
          {children}
       </AuthContext.Provider>
    )

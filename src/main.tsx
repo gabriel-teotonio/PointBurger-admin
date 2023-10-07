@@ -7,24 +7,32 @@ import { FoodList } from './Routes/FoodList/index.tsx'
 import { FoodCreate } from './Routes/FoodCreate/index.tsx'
 import { FoodUpdate } from './Routes/FoodUpdate/index.tsx'
 import { Login } from './Routes/Login/index.tsx'
-
+import { AuthProvider } from './contexts/Auth/AuthProvider.tsx'
+import { ProtectedRoute } from './contexts/Auth/RequireAuth.tsx'
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <Root />,
+    element: 
+    <ProtectedRoute>
+      <Root />
+    </ProtectedRoute>,
     children:[
       {
+        path: "/",
         index: true,
-        element: <FoodList />,
+        element: 
+          <FoodList />
       },
       {
         path: "/FoodCreate",
-        element: <FoodCreate />,
+        element: (
+            <FoodCreate />
+        ),
       },
       {
         path: "/FoodUpdate/:id",
-        element: <FoodUpdate />,
+        element: 
+          <FoodUpdate />
       },
     ],
   },
@@ -36,6 +44,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>,
 )
