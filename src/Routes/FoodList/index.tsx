@@ -2,13 +2,15 @@ import { FoodCard } from "../../components/FoodCard"
 import { Button, Container, Header, Ul } from "./styles"
 import { useNavigate } from "react-router-dom";
 import { useFoodData } from "../../hooks/useFoodData";
+import { useFoodDelete } from "../../hooks/useFoodDelete";
 
 
 
 
 export const FoodList = () => {
   const navigate = useNavigate()
-  const { data, deleteData } = useFoodData()
+  const { data } = useFoodData()
+  const { deleteFood } = useFoodDelete()
 
   return (
     <Container>
@@ -28,7 +30,7 @@ export const FoodList = () => {
           description={food.description}
           price={food.price}
           imgUrl={food.img}
-          onDelete={deleteData}
+          onDelete={deleteFood}
           />
         ))}
       </Ul>
