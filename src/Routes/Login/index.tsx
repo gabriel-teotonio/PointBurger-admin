@@ -3,6 +3,9 @@ import { UserForm } from "../../types/User"
 import { useForm } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
+import { useContext, useEffect } from "react"
+import { AuthContext } from "../../contexts/Auth/AuthContext"
+import { useLocation, useNavigate } from "react-router-dom"
 
 const Container = styled.div`
   display: flex;
@@ -67,13 +70,25 @@ const userSchema = yup.object({
 }).required()
 
 export const Login = () => {
-
+  const auth = useContext(AuthContext)
   const { register, handleSubmit, formState:{errors} } = useForm<UserForm>({
     resolver: yupResolver(userSchema)
- })
+  })
+  const navigate = useNavigate()
 
- const onSubmit = (data: UserForm) => {
-  console.log(data)
+ const onSubmit = async (data: UserForm) => {
+    try {
+      const response = await auth.signin(data.email, data.password)
+      if(response){
+        alert("usuario logado com sucesso!")
+        navigate("/", { replace: true });
+      }else{
+        alert("usuário nao existente!")
+      }
+    } catch (error) {
+      alert("erro ao logar usuário")
+      console.log(error)
+    }
  }
 
   return (

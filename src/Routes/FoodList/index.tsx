@@ -10,8 +10,6 @@ export const FoodList = () => {
   const navigate = useNavigate()
   const { data, deleteData } = useFoodData()
 
-  
-
   return (
     <Container>
       <Header>
