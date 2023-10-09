@@ -3,20 +3,20 @@ import { Form } from "../../components/Form"
 import { Header } from "./styles"
 import { IFoodDataForm } from "../../types/FoodData"
 import { api } from "../../lib/axios"
+import { useFoodCreate } from "../../hooks/useFoodCreate"
 
 export const FoodCreate = () => {
   const navigate = useNavigate()
+  const { createNewFood } = useFoodCreate()
 
-  const handleCreateFood = (data: IFoodDataForm) => {
-      api.post("/foods", data)
-      .then(() => {
-        alert("burger adicionado com sucesso!")
-        navigate("/")
-      })
-      .catch(error => {
-        console.log(error)
-        alert("erro ao adicionar burger!")
-      })
+  const handleCreateFood = async (data: IFoodDataForm) => {
+    try {
+      await createNewFood(data)
+      alert("Novo burger criado com sucesso!")
+      navigate("/")
+    } catch (error) {
+      alert("não foi possível criar novo burger, tente novamente!")
+    }
   }
 
   return (
