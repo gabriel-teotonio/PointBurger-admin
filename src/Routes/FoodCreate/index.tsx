@@ -2,7 +2,6 @@ import { useNavigate } from "react-router-dom"
 import { Form } from "../../components/Form"
 import { Header } from "./styles"
 import { IFoodDataForm } from "../../types/FoodData"
-import { api } from "../../lib/axios"
 import { useFoodCreate } from "../../hooks/useFoodCreate"
 
 export const FoodCreate = () => {

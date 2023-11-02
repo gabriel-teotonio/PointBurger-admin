@@ -3,9 +3,9 @@ import { UserForm } from "../../types/User"
 import { useForm } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
-import { useContext, useEffect } from "react"
+import { useContext } from "react"
 import { AuthContext } from "../../contexts/Auth/AuthContext"
-import { useLocation, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 const Container = styled.div`
   display: flex;

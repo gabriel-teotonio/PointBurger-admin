@@ -1,12 +1,10 @@
 import { yupResolver } from "@hookform/resolvers/yup"
-import { IFoodData, IFoodDataForm } from "../../types/FoodData"
+import { IFoodDataForm } from "../../types/FoodData"
 import { Container, ErroMessage } from "./styles"
 import { useForm } from "react-hook-form"
 import * as yup from "yup"
 import { useEffect } from "react"
-import { api } from "../../lib/axios"
 import { useParams } from "react-router-dom"
-import { useFoodData } from "../../hooks/useFoodData"
 import { useFoodItem } from "../../hooks/useFoodItem"
 
 interface FormProps {
