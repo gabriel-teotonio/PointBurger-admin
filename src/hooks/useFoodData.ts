@@ -1,10 +1,7 @@
 import { useEffect, useState } from "react"
-import { api } from "../lib/axios"
 import { IFoodData } from "../types/FoodData"
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../services/firebaseConfig";
-
-
 
 export const useFoodData = () => {
    const [data, setData] = useState<IFoodData[]>([])

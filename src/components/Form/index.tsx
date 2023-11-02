@@ -1,11 +1,13 @@
 import { yupResolver } from "@hookform/resolvers/yup"
-import { IFoodDataForm } from "../../types/FoodData"
+import { IFoodData, IFoodDataForm } from "../../types/FoodData"
 import { Container, ErroMessage } from "./styles"
 import { useForm } from "react-hook-form"
 import * as yup from "yup"
 import { useEffect } from "react"
 import { api } from "../../lib/axios"
 import { useParams } from "react-router-dom"
+import { useFoodData } from "../../hooks/useFoodData"
+import { useFoodItem } from "../../hooks/useFoodItem"
 
 interface FormProps {
    btnTitle: string
@@ -20,28 +22,27 @@ const foodSchema = yup.object({
    .nullable()
    .positive("Aceita apenas valores positivos")
    .required("Campo preço obrigatório, preencha"),
-   imgUrl: yup.string().required("Campo url obrigatório, preencha"),
+   img: yup.string().required("Campo url obrigatório, preencha"),
    description: yup.string().required("Campo descrição obrigatório, preencha")
 }).required()
+
 
 export const Form = ({btnTitle, onAction}: FormProps) => {
    const { id } = useParams()
    const { register, handleSubmit, formState:{errors}, reset } = useForm<IFoodDataForm>({
       resolver: yupResolver(foodSchema)
-   })
-
-   const getDataUpdate = async () => {
-    try {
-       const response = await api.get("/foods/" + id)
-       reset(response.data)
-    } catch (error) {
-      console.log("Erro na requisição")
-    } 
-   }
-   useEffect(() => {
-      if(!!id) getDataUpdate()
-   }, [])
+   }) 
+   const { food } = id ? useFoodItem(id) : {food: null}
    
+   useEffect(() => {
+      console.log(food)
+      if(id && food) reset({
+         title: food.title,
+         description: food.description,
+         price: food.price,
+         img: food.img,
+      })
+   },[])
 
   return (
    <Container onSubmit={handleSubmit(onAction)}>
@@ -68,9 +69,9 @@ export const Form = ({btnTitle, onAction}: FormProps) => {
          <input 
             type="text" 
             placeholder="http://image"
-            {...register("imgUrl")}
+            {...register("img")}
             />
-            <ErroMessage>{errors.imgUrl?.message}</ErroMessage>
+            <ErroMessage>{errors.img?.message}</ErroMessage>
       </label>
       <label htmlFor="">
          Descrição

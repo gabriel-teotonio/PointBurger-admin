@@ -2,19 +2,22 @@ import { useNavigate, useParams } from "react-router-dom"
 import { Form } from "../../components/Form"
 import { Header } from "../FoodCreate/styles"
 import { IFoodDataForm } from "../../types/FoodData"
-import { api } from "../../lib/axios"
+import { useFoodUpdate } from "../../hooks/useFoodUpdate"
 
 export const FoodUpdate = () => {
    const {id} = useParams()
    const navigate = useNavigate()
+   const {updateFood} = useFoodUpdate()
 
-   const handleEditFood = (data: IFoodDataForm) => {
-      api.put(`/foods/${id}`, data)
-         .then(() => {
-            alert("item atualizado com sucesso!")
-            navigate("/")
-         })
-         .catch(error => console.log("erro na edição do item", error))
+   const handleEditFood = async (data: IFoodDataForm) => {
+      try {
+         if(id){
+            await updateFood(id, data)
+            alert("burger atualizado com sucesso!")
+         }
+      } catch (error) {
+         alert("erro ao editar burger! Tente novamente!")
+      }
    }
   return (
    <>
