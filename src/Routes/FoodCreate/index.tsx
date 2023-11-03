@@ -3,6 +3,7 @@ import { Form } from "../../components/Form"
 import { Header } from "./styles"
 import { IFoodDataForm } from "../../types/FoodData"
 import { useFoodCreate } from "../../hooks/useFoodCreate"
+import IconArrow from "../../icons/IconArrow.svg";
 
 export const FoodCreate = () => {
   const navigate = useNavigate()
@@ -23,7 +24,7 @@ export const FoodCreate = () => {
       <Header>
          <h3>Adicionar Burger</h3>
           <button onClick={() => navigate("/")}>
-            <img src="src/icons/IconArrow.svg" alt="icon arrow" />
+            <img src={IconArrow} alt="icon arrow" />
            Cancelar
           </button>
       </Header>

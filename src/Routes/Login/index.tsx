@@ -6,6 +6,7 @@ import * as yup from "yup"
 import { useContext } from "react"
 import { AuthContext } from "../../contexts/Auth/AuthContext"
 import { useNavigate } from "react-router-dom"
+import Logo from "../../icons/logo.svg"
 
 const Container = styled.div`
   display: flex;
@@ -95,7 +96,7 @@ export const Login = () => {
     <Container>
       <Box>
         <header>
-          <img src="src\imgs\logo.svg" alt="logo image" />
+          <img src={Logo} alt="logo image" />
           <h3>Entrar na conta</h3>
         </header>
         <form onSubmit={handleSubmit(onSubmit)}>

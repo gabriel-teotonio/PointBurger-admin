@@ -3,7 +3,7 @@ import { Button, Container, Header, Ul } from "./styles"
 import { useNavigate } from "react-router-dom";
 import { useFoodData } from "../../hooks/useFoodData";
 import { useFoodDelete } from "../../hooks/useFoodDelete";
-
+import IconPlus from "../../icons/IconPlus.svg";
 
 
 
@@ -17,7 +17,7 @@ export const FoodList = () => {
       <Header>
          <h3>Burgers</h3>
           <Button onClick={() => navigate("/foodCreate")}>
-            <img src="src/icons/IconPlus.svg" alt="icon plus" />
+            <img src={IconPlus} alt="icon plus" />
             novo burger
           </Button>
       </Header>

@@ -3,6 +3,7 @@ import { Form } from "../../components/Form"
 import { Header } from "../FoodCreate/styles"
 import { IFoodDataForm } from "../../types/FoodData"
 import { useFoodUpdate } from "../../hooks/useFoodUpdate"
+import IconArrow from "../../icons/IconArrow.svg";
 
 export const FoodUpdate = () => {
    const {id} = useParams()
@@ -24,7 +25,7 @@ export const FoodUpdate = () => {
       <Header>
       <h3>Atualizar Burger</h3>
       <button onClick={() => navigate("/")}>
-         <img src="../src/icons/IconArrow.svg" alt="icon arrow" />
+         <img src={IconArrow} alt="icon arrow" />
       Cancelar
       </button>
       </Header>

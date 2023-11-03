@@ -1,5 +1,6 @@
 import { Outlet, useNavigate } from "react-router-dom"
 import { Container, Main, Nav, NavMenu } from "./styles"
+import Logo from "../../icons/logo.svg"
 
 export const Root = () => {
    const navigate = useNavigate()
@@ -7,7 +8,7 @@ export const Root = () => {
       <Container>
          <Nav>
             <header>
-               <p><img src="../src/icons/logo.svg" alt="logo" /></p>
+               <p><img src={Logo} alt="logo" /></p>
             </header>
             <NavMenu>
                <li onClick={() => navigate("/")}>Burgers</li>

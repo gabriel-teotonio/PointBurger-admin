@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom"
 import { ActionsBtn, Container, InfoDescription, InfoTitle } from "./styles"
 import { formatedLongText } from "../../utils/formatting"
+import IconDelete from "../../icons/IconDelete.svg"
+import IconEdit from "../../icons/IconEdit.svg"
 
 interface FoodCardProps {
    title: string
@@ -36,10 +38,10 @@ export const FoodCard = ({title,description, price, imgUrl, id, onDelete}: FoodC
          </InfoDescription>
          <ActionsBtn>
             <button onClick={() => navigate(`/FoodUpdate/${id}`)}>
-               <img src="src/icons/IconEdit.svg" alt="edit icon" />
+               <img src={IconEdit} alt="edit icon" />
             </button>
             <button onClick={handleDeleteFood}>
-               <img src="src/icons/IconDelete.svg" alt="delete icon" />
+               <img src={IconDelete} alt="delete icon" />
             </button>
          </ActionsBtn>
       </div>
