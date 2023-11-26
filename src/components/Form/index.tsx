@@ -33,14 +33,13 @@ export const Form = ({btnTitle, onAction}: FormProps) => {
    const { food } = id ? useFoodItem(id) : {food: null}
    
    useEffect(() => {
-      console.log(food)
       if(id && food) reset({
          title: food.title,
          description: food.description,
          price: food.price,
          img: food.img,
       })
-   },[])
+   },[food])
 
   return (
    <Container onSubmit={handleSubmit(onAction)}>
