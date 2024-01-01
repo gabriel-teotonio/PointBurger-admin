@@ -7,7 +7,7 @@ type AuthContextType = {
    signin: (email: string, password: string) => Promise<boolean>;
    signout: () => void;
    isLoading: boolean;
-   isAutenticated: boolean;
+   token: string;
 }
 
 export const AuthContext = createContext<AuthContextType>(null!)

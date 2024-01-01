@@ -3,14 +3,12 @@ import { AuthContext } from "./AuthContext";
 import { Navigate, useLocation } from "react-router-dom";
 
 export const ProtectedRoute = ({ children }:{children: JSX.Element}) => {
-   const { isAutenticated, isLoading } = useContext(AuthContext)
+   const { isLoading, user } = useContext(AuthContext)
    const location = useLocation()
+   console.log(user)
+   
+   if(isLoading) return <h2>carregando...</h2>
+   if (!user) return <Navigate to="/login" state={{ from: location }} replace />;
 
-   if(isLoading){
-    return <h2>carregando</h2>
-   }
-   if (!isAutenticated) {
-     return <Navigate to="/login" state={{ from: location }} replace />;
-   }
-   return children;  
+   return children;
  };
