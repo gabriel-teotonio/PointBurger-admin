@@ -12,10 +12,7 @@ import { ProtectedRoute } from './contexts/Auth/RequireAuth.tsx'
 
 const router = createBrowserRouter([
   {
-    element: 
-    <ProtectedRoute>
-      <Root />
-    </ProtectedRoute>,
+    element: <ProtectedRoute><Root/></ProtectedRoute>,
     children:[
       {
         path: "/",
